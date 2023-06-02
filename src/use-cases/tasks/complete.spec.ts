@@ -20,8 +20,6 @@ describe('Complete Task Use Case', () => {
 
     const { task } = await sut.execute(createdTask.id)
 
-    console.log(task)
-
     expect(task.completed_at).toEqual(expect.any(Date))
   })
 })

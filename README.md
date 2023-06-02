@@ -34,7 +34,6 @@ Rotas:
     
     Deve ser possível listar todas as tasks salvas no banco de dados.
     
-    Também deve ser possível realizar uma busca, filtrando as tasks pelo `title` e `description`
     
 - `PUT - /tasks/:id`
     
@@ -45,6 +44,7 @@ Rotas:
     Se for enviado somente o `title`, significa que o `description` não pode ser atualizado e vice-versa.
     
     Antes de realizar a atualização, deve ser feito uma validação se o `id` pertence a uma task salva no banco de dados.
+
     
 - `DELETE - /tasks/:id`
     
@@ -53,3 +53,6 @@ Rotas:
     Antes de realizar a remoção, deve ser feito uma validação se o `id` pertence a uma task salva no banco de dados.
     
 - `PATCH - /tasks/:id/complete`
+    Deve ser possivel marcar a task como completa pelo id 
+    
+     deve ser feito uma validação se o `id` pertence a uma task salva no banco de dados.

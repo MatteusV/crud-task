@@ -1,5 +1,5 @@
 import { Prisma, Task } from '@prisma/client'
-import { TaskRespository } from '../task-repository'
+import { TaskRespository, UpdateOptions } from '../task-repository'
 import { randomUUID } from 'crypto'
 
 export class InMemoryTaskRepository implements TaskRespository {
@@ -73,16 +73,32 @@ export class InMemoryTaskRepository implements TaskRespository {
     return task
   }
 
-  async update(id: string) {
+  async update({ id, description, title }: UpdateOptions) {
     const task = this.items.find((item) => item.id === id)
 
     if (!task) {
       return null
     }
 
-    task.updated_at = new Date()
+    if (title && description) {
+      task.title = title
+      task.description = description
+    }
+
+    if (title && !description) {
+      task.title = title
+    }
+
+    if (!title && description) {
+      task.description = description
+    }
+
+    if (!title && !description) {
+      return null
+    }
 
     this.items.push(task)
+    task.updated_at = new Date()
 
     return task
   }

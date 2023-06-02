@@ -1,5 +1,5 @@
 import { Prisma } from '@prisma/client'
-import { TaskRespository } from '../task-repository'
+import { TaskRespository, UpdateOptions } from '../task-repository'
 import { prisma } from '../../lib/prisma'
 
 export class PrismaTaskRepository implements TaskRespository {
@@ -76,16 +76,45 @@ export class PrismaTaskRepository implements TaskRespository {
     return task
   }
 
-  async update(id: string) {
-    const task = await prisma.task.update({
-      where: {
-        id,
-      },
-      data: {
-        updated_at: new Date(),
-      },
-    })
+  async update({ id, description, title }: UpdateOptions) {
+    if (description && title) {
+      const task = await prisma.task.update({
+        where: {
+          id,
+        },
+        data: {
+          title,
+          description,
+        },
+      })
 
-    return task
+      return task
+    }
+
+    if (!title && description) {
+      const task = await prisma.task.update({
+        where: {
+          id,
+        },
+        data: {
+          description,
+        },
+      })
+      return task
+    }
+
+    if (title && !description) {
+      const task = await prisma.task.update({
+        where: {
+          id,
+        },
+        data: {
+          title,
+        },
+      })
+      return task
+    }
+
+    return null
   }
 }
