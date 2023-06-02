@@ -39,7 +39,7 @@ Rotas:
     Deve ser possível listar uma task especifica salva no banco de dados pelo `id`.
     
     
-- `PUT - /tasks/update/:id`
+- `PUT - /tasks/:id`
     
     Deve ser possível atualizar uma task pelo `id`.
     
@@ -56,7 +56,7 @@ Rotas:
     
     Antes de realizar a remoção, deve ser feito uma validação se o `id` pertence a uma task salva no banco de dados.
     
-- `PATCH - /tasks/:id/complete`
+- `PATCH - /tasks/:id`
     Deve ser possivel marcar a task como completa pelo id 
     
      deve ser feito uma validação se o `id` pertence a uma task salva no banco de dados.
