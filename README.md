@@ -34,8 +34,12 @@ Rotas:
     
     Deve ser possível listar todas as tasks salvas no banco de dados.
     
+- `GET - /tasks`
     
-- `PUT - /tasks/:id`
+    Deve ser possível listar uma task especifica salva no banco de dados pelo `id`.
+    
+    
+- `PUT - /tasks/update/:id`
     
     Deve ser possível atualizar uma task pelo `id`.
     
