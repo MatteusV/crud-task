@@ -34,7 +34,7 @@ Rotas:
     
     Deve ser possível listar todas as tasks salvas no banco de dados.
     
-- `GET - /tasks`
+- `GET - /tasks/:id`
     
     Deve ser possível listar uma task especifica salva no banco de dados pelo `id`.
     
